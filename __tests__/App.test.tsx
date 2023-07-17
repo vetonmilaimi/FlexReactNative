@@ -107,5 +107,7 @@ describe('Card Component', () => {
 
     const products = await fetchProducts();
     expect(products).toEqual(mockData)
+
+    expect(mockedAxios.get).toHaveBeenCalledWith('https://dummyjson.com/products');
   })
 })
