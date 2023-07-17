@@ -14,16 +14,21 @@ I used another library for dropdown of filter. <br />
 
 ### 1. How might you make this app more secure? <br />
 
-> Of course we need to make auth functional but I don't think we need any other thing here just because we fetch and filter data from an outsource api and we are not posting or deleting data here.
+> We need to implement authentication functionality. However, since we are only fetching and filtering data from an external API and not performing any data posting or deletion here, we don't require any additional features.
 
 ### 2. How would you make this solution scale to millions of records? <br />
 
-> When we fetch data we need to make a limit of product to get and that we can do if we have an endpoint from API, for this API we have on "https://dummyjson.com/products?limit=10" and this endpoint gives us 10 first products so we display 10 products on first time and when we scroll we make another call but now skipping 10 first product with this endpoint "https://dummyjson.com/products?limit=10&skip=10", also if we don't need some kind of data we can select which data we need with this endpoint "https://dummyjson.com/products?select=title,price".
+> When fetching data, we need to set a limit for the number of products to retrieve. We can achieve this by utilizing an endpoint from the API. For example, the endpoint 'https://dummyjson.com/products?limit=10' provides the first 10 products, which we display initially. As the user scrolls, we make another API call to retrieve the next set of products, skipping the first 10, using the endpoint 'https://dummyjson.com/products?limit=10&skip=10'. Additionally (something like pagination), also the API allows us to select specific data fields using the endpoint 'https://dummyjson.com/products?select=title,price' if we don't require all the available data.
 
 ### 3.What else would you have liked to improve given more time?
 
-> What I would love to do for improving this is to not make filters and search on frontend and to work with API calls because for filtering data backend is even more faster than frontend. And maybe I would use cache for 10 first products and make call before scroll for 10 second products and then delete from cache 10 first products and then save 10 second products on cache and continue like this, if we do this then user is not going to wait for fetching and see that ugly loading, of course you can say what if we delete a product and I will say save on cache for 2 hours for e.g.
-> For improving even more maybe I can separate css on different files just for better code review and also I need to remove that library for checkbox and use react native paper checkbox and don't use a lot of libraries.
+> To enhance the performance, I plan to move filters and search functionalities to the backend and handle them through API calls. Backend filtering is significantly faster than frontend processing. Additionally, I would implement caching for the first 10 products, retrieving them through a single API call initially. As the user scrolls, I'll make another API call to fetch the next 10 products and efficiently manage the cache by removing the first 10 and storing the latest set. This approach ensures a smoother user experience, eliminating the need for them to wait for data fetching and avoiding an unattractive loading display.
+
+To further improve performance, I'll set a cache expiration of, for example, 2 hours for each product, so if a product is deleted, it will be automatically removed from the cache after the specified time.
+
+In terms of code organization, I'm considering separating CSS into different files to facilitate better code review and maintenance.
+
+Moreover, I'll optimize the use of external libraries and aim to replace the checkbox library with 'react native paper checkbox' to reduce dependencies and keep the codebase lean and efficient.
 
 
 # How you can run this project
